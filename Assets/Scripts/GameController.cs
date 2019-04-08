@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour {
     {
         if (restart)
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 Application.LoadLevel(Application.loadedLevel);
             }
@@ -57,7 +57,7 @@ public class GameController : MonoBehaviour {
             yield return new WaitForSeconds(waveWait);
             if (gameOver)
             {
-                restartText.text = "Press 'R' for Restart";
+                restartText.text = "Press 'F' for Restart";
                 restart = true;
                 break;
             }
@@ -68,16 +68,26 @@ public class GameController : MonoBehaviour {
     {
         score += newScoreValue;
         UpdateScore();
+        if (score >= 100)
+        {
+            Win();
+        }
     }
 
     void UpdateScore()
     {
-        scoreText.text = "Score: " + score;
+        scoreText.text = "Points: " + score;
     }
 
     public void GameOver()
     {
         gameOverText.text = "Game Over";
+        gameOver = true;
+    }
+
+    public void Win()
+    {
+        gameOverText.text = "You Win!\n Game Created by Thomas Fletcher";
         gameOver = true;
     }
 }
