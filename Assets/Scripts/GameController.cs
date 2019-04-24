@@ -69,10 +69,10 @@ public class GameController : MonoBehaviour {
                     Quaternion spawnRotation = Quaternion.identity;
                     Instantiate(hazard, spawnPosition, spawnRotation);
                     yield return new WaitForSeconds(spawnWait);
-                    if (gameOver = true) break;
+                    if (gameOver == true) break;
                 }
 
-                if (gameOver = true) break;
+                if (gameOver == true) break;
                 yield return new WaitForSeconds(waveWait);
 
                 while (score > 100 && score < 200)
@@ -82,10 +82,10 @@ public class GameController : MonoBehaviour {
                     Quaternion spawnRotation = Quaternion.identity;
                     Instantiate(hazard, spawnPosition, spawnRotation);
                     yield return new WaitForSeconds(spawnWait);
-                    if (gameOver = true) break;
+                    if (gameOver == true) break;
                 }
 
-                if (gameOver = true) break;
+                if (gameOver == true) break;
                 yield return new WaitForSeconds(waveWait);
             }
 
@@ -115,12 +115,16 @@ public class GameController : MonoBehaviour {
 
     public void GameOver()
     {
+        game.Stop();
+        lose.Play();
         gameOverText.text = "Game Over";
         gameOver = true;
     }
 
     public void Win()
     {
+        game.Stop();
+        win.Play();
         gameOverText.text = "You Win!\n Game Created by Thomas Fletcher";
         gameOver = true;
     }
