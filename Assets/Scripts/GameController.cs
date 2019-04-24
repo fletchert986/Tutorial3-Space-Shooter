@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour {
                 if (gameOver == true) break;
                 yield return new WaitForSeconds(waveWait);
 
-                while (score > 100 && score < 200)
+                while (score >= 100 && score < 200)
                 {
                     GameObject hazard = hazards[Random.Range(0, hazards.Length)];
                     Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
