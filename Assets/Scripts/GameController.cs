@@ -33,7 +33,7 @@ public class GameController : MonoBehaviour {
         restart = false;
         restartText.text = "";
         gameOverText.text = "";
-        score = 0;
+        score = 10;
         UpdateScore();
         StartCoroutine (SpawnWaves());
         AudioSource[] audioSources = GetComponents<AudioSource>();
@@ -61,8 +61,8 @@ public class GameController : MonoBehaviour {
     {
         yield return new WaitForSeconds(startWait);
         while (true) {
-            while (score<200) {
-                while (score < 100)
+            //while (score > 0) {
+                while (score > 0)
                 {
                     GameObject hazard = hazards[Random.Range(0, hazards.Length)];
                     Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour {
                 if (gameOver == true) break;
                 yield return new WaitForSeconds(waveWait);
 
-                while (score >= 100 && score < 200)
+                /*while (score >= 100 && score < 200)
                 {
                     GameObject hazard = hazards[Random.Range(0, hazards.Length)];
                     Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
@@ -86,8 +86,10 @@ public class GameController : MonoBehaviour {
                 }
 
                 if (gameOver == true) break;
-                yield return new WaitForSeconds(waveWait);
-            }
+                yield return new WaitForSeconds(waveWait);*/
+
+                
+            //}
 
             if (gameOver)
             {
@@ -110,7 +112,7 @@ public class GameController : MonoBehaviour {
 
     void UpdateScore()
     {
-        scoreText.text = "Points: " + score;
+        scoreText.text = "Ships Left: " + score;
     }
 
     public void GameOver()
