@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour {
         restart = false;
         restartText.text = "";
         gameOverText.text = "";
-        score = 10;
+        score = 0;
         UpdateScore();
         StartCoroutine (SpawnWaves());
         AudioSource[] audioSources = GetComponents<AudioSource>();
@@ -121,13 +121,14 @@ public class GameController : MonoBehaviour {
 
     void UpdateScore()
     {
-        scoreText.text = "Ships Left: " + score;
+        scoreText.text = "Defeat the Boss";
     }
 
     public void GameOver()
     {
         game.Stop();
         lose.Play();
+        scoreText.text = "You are Defeated";
         gameOverText.text = "Game Over";
         gameOver = true;
     }
@@ -136,6 +137,7 @@ public class GameController : MonoBehaviour {
     {
         game.Stop();
         win.Play();
+        scoreText.text = "The Boss is Defeated";
         gameOverText.text = "You Win!\n Game Created by Thomas Fletcher";
         gameOver = true;
     }
