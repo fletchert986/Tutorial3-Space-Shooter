@@ -22,7 +22,8 @@ public class GameController : MonoBehaviour {
 
     private bool gameOver;
     private bool restart;
-    private int score;
+    public int score;
+    //private GameObject background;
 
     public AudioSource game;
     /*public AudioClip clip1;
@@ -45,6 +46,8 @@ public class GameController : MonoBehaviour {
         /*clip1 = audioSources[0].clip;
         clip2 = audioSources[1].clip;
         clip3 = audioSources[2].clip;*/
+        //GameObject gameBackground = GameObject.FindWithTag("GameController");
+        //background = GameObject.FindGameObjectWithTag("Background");
     }
 
     private void Update()
@@ -75,7 +78,7 @@ public class GameController : MonoBehaviour {
                     if (gameOver == true) break;
                 }
 
-            if (gameOver == true) break;
+            //if (gameOver == true) break;
             //yield return new WaitForSeconds(waveWait);
 
                 /*while (score >= 100 && score < 200)
@@ -137,6 +140,8 @@ public class GameController : MonoBehaviour {
     {
         game.Stop();
         win.Play();
+        transform.FindChild("part_starField").gameObject.SetActive(true);
+        //background.script.BGController.scrollSpeed = 4;
         scoreText.text = "The Boss is Defeated";
         gameOverText.text = "You Win!\n Game Created by Thomas Fletcher";
         gameOver = true;
