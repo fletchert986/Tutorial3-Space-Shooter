@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     public GameObject[] hazards;
-    public GameObject boss;
-    public GameObject bolt;
+    //public GameObject boss;
+    //public GameObject bolt;
     public Vector3 spawnValues;
-    public Vector3 spawnBoss;
-    public Vector3 spawnBolt;
+    //public Vector3 spawnBoss;
+    //public Vector3 spawnBolt;
     public int hazardCount;
     public float spawnWait;
     public float startWait;
@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour {
     {
         yield return new WaitForSeconds(startWait);
         while (true) {
-                while (score > 0 && score < 100)
+                while (score == 0)
                 {
                     GameObject hazard = hazards[Random.Range(0, hazards.Length)];
                     Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
@@ -76,12 +76,7 @@ public class GameController : MonoBehaviour {
                 }
 
             if (gameOver == true) break;
-            yield return new WaitForSeconds(waveWait);
-            if (score <= 0)
-            {
-                Vector3 spawnPosition = new Vector3(spawnBoss.x, spawnBoss.y, spawnBoss.z);
-                Instantiate(boss, spawnBoss);
-            }
+            //yield return new WaitForSeconds(waveWait);
 
                 /*while (score >= 100 && score < 200)
                 {
@@ -96,13 +91,13 @@ public class GameController : MonoBehaviour {
                 if (gameOver == true) break;
                 yield return new WaitForSeconds(waveWait);*/
 
-            while (score <= 0)
+            /*while (score <= 0)
             {
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
                 Instantiate(bolt, spawnBolt);
                 yield return new WaitForSeconds(spawnWait);
                 if (gameOver == true) break;
-            }
+            }*/
             
 
                 if (gameOver)
